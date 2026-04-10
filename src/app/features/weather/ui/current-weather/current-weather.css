@@ -1,0 +1,45 @@
+.weather-mini {
+  background-color: red;
+  padding: 2rem;
+  color: #111;
+  max-width: fit-content;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.temp-display {
+  margin: 0.5rem 0;
+}
+
+.value {
+  font-size: 5.5rem;
+  font-weight: 200;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.details {
+  font-size: 0.85rem;
+  font-weight: 300;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.details b {
+  font-weight: 600;
+}
+
+.separator {
+  opacity: 0.5;
+}

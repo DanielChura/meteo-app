@@ -1,0 +1,21 @@
+@if (current() && locationData()) {
+  <section class="weather-mini">
+    <header>
+      <span class="location">{{ locationData()?.city }}, {{ locationData()?.countryCode }}</span>
+    </header>
+
+    <div class="temp-display">
+      <span class="value">{{ current()?.current_weather?.temperature }}°</span>
+    </div>
+
+    <footer class="details">
+      <span
+        >Viento <b>{{ current()?.current_weather?.windspeed }} km/h</b></span
+      >
+      <span class="separator">/</span>
+      <span
+        >Elevación <b>{{ current()?.elevation }} m</b></span
+      >
+    </footer>
+  </section>
+}
