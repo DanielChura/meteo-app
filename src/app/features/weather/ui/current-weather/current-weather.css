@@ -1,39 +1,39 @@
 .weather-mini {
-  background-color: red;
-  padding: 2rem;
-  color: #111;
-  max-width: fit-content;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  height: 100%;
+  color: inherit;
 }
 
 .location {
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
   font-weight: 500;
-  opacity: 0.6;
+  opacity: 0.8;
+  margin-bottom: auto;
 }
 
 .temp-display {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .value {
-  font-size: 5.5rem;
-  font-weight: 200;
-  letter-spacing: -0.05em;
+  font-size: 6rem;
+  font-weight: 300;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 
 .details {
-  font-size: 0.85rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 400;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 1rem;
+  opacity: 0.9;
 }
 
 .details b {
@@ -41,5 +41,5 @@
 }
 
 .separator {
-  opacity: 0.5;
+  opacity: 0.4;
 }

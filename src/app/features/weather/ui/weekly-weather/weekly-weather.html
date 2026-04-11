@@ -1,1 +1,12 @@
-<p>weekly-weather works!</p>
+<main class="weekly-weather">
+  @for (day of DayW().date; track day; let i = $index) {
+    <div class="day-card">
+      <span class="day-name">{{ day }}</span>
+      <div class="weather-info">
+        <ng-icon [name]="(DayW().codes[i] | iconWeather).icon" size="1.8rem" class="weather-icon"></ng-icon>
+        <span class="weather-desc">{{ (DayW().codes[i] | iconWeather).description }}</span>
+      </div>
+      <span class="day-temp">{{ DayW().hours[i] }}°</span>
+    </div>
+  }
+</main>

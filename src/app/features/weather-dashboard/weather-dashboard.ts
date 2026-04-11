@@ -3,12 +3,14 @@ import { OpenMeteoHttp } from '../weather/api/open-meteo-http';
 import { LocationService } from '../weather/api/location';
 import { CurrentWeatherComponent } from '../weather/ui/current-weather/current-weather';
 import { WeeklyWeatherComponent } from '../weather/ui/weekly-weather/weekly-weather';
-import { CurrentWeather, Hourly, WeatherResponse } from '../weather/models/DTOresponse';
+import { WeatherResponse } from '../weather/models/DTOresponse';
 import { LocationInfo } from '../weather/models/DTOgeoCode';
+import { HourlyWeather } from '../weather/ui/hourly-weather/hourly-weather';
+import { Air } from '../weather/ui/air/air';
 
 @Component({
   selector: 'app-weather-dashboard',
-  imports: [CurrentWeatherComponent, WeeklyWeatherComponent],
+  imports: [CurrentWeatherComponent, WeeklyWeatherComponent, HourlyWeather, Air],
   templateUrl: './weather-dashboard.html',
   styleUrl: './weather-dashboard.css',
 })

@@ -1,2 +1,24 @@
-<app-current-weather [current]="currentWeather" [locationData]="location" />
-<app-weekly-weather [weekly]="weeklyWeather" [locationData]="location" />
+<main class="dashboard-container">
+  <div class="grid-layout">
+    <app-current-weather
+      class="grid-item item-current"
+      [current]="currentWeather"
+      [locationData]="location"
+    ></app-current-weather>
+
+    <app-hourly-weather class="grid-item item-hourly"></app-hourly-weather>
+    <app-air class="grid-item item-air"></app-air>
+
+    <div class="grid-item empty-placeholder item-uv">
+      <span>UV Index</span>
+    </div>
+    <div class="grid-item empty-placeholder item-humidity">
+      <span>Humidity</span>
+    </div>
+
+    <app-weekly-weather 
+      class="grid-item item-weekly" 
+      [weekly]="weeklyWeather"> 
+    </app-weekly-weather>
+  </div>
+</main>
