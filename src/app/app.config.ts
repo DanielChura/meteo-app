@@ -8,6 +8,7 @@ import {
   lucideCloudLightning,
   lucideCloudFog,
   lucideSnowflake,
+  lucideWind,
 } from '@ng-icons/lucide';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -17,6 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(withFetch()),
-    provideIcons({ lucideSun, lucideCloud, lucideCloudRain, lucideCloudLightning, lucideCloudFog, lucideSnowflake }),
+    provideIcons({ lucideSun, lucideCloud, lucideCloudRain, lucideCloudLightning, lucideCloudFog, lucideSnowflake, lucideWind }),
   ],
 };

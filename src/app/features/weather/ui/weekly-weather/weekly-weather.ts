@@ -1,89 +1,88 @@
-import { Component, input, OnChanges, signal } from '@angular/core';
+import { Component, ElementRef, input, OnChanges, signal, ViewChild } from '@angular/core';
 import { WeatherResponse } from '../../models/DTOresponse';
-import { IconWeatherPipe } from '../../../../core/pipes/icon-weather-pipe';
-import { NgIconComponent } from '@ng-icons/core';
-export interface WeatherHour {
+import { Chart } from 'chart.js/auto';
+
+export interface HourlyDetail {
   time: string;
   temp: number;
-  code: number;
 }
 
-export interface DailyWeather {
-  date: string;
-  hours: WeatherHour[];
+export interface DayData {
+  name: string;
+  hourly: HourlyDetail[];
 }
 
 @Component({
   selector: 'app-weekly-weather',
-  imports: [IconWeatherPipe, NgIconComponent],
   templateUrl: './weekly-weather.html',
   styleUrl: './weekly-weather.css',
 })
 export class WeeklyWeatherComponent implements OnChanges {
   weekly = input<WeatherResponse | null>();
+  @ViewChild('chartJS') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
-  DayW = signal<{ date: string[]; hours: number[]; codes: number[] }>({
-    date: [],
-    hours: [],
-    codes: [],
-  });
+  keys = signal<string[]>([]);
+  weeklyData: Record<string, { time: string; temp: number }[]> = {};
 
   ngOnChanges(): void {
-    const times = this.weekly()?.hourly.time || [];
-    const temps = this.weekly()?.hourly.temperature_2m || [];
-    const codes = this.weekly()?.hourly.weathercode || [];
+    const data = this.weekly()?.hourly;
 
-    const dictionary = times.reduce(
-      (acumulador, timeString, i) => {
-        const [day, hour] = timeString.split('T');
-        if (!acumulador[day]) {
-          acumulador[day] = { date: day, hours: [] };
+    if (!data) return;
+
+    const times = data.time.reduce(
+      (acc, time, i) => {
+        const [day, hour] = time.split('T');
+        const fecha = new Date(day);
+        const diaSemana = fecha.toLocaleDateString('es-ES', { weekday: 'long' });
+        const dia = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1).toLowerCase();
+
+        if (!acc[dia]) {
+          acc[dia] = [];
         }
-        acumulador[day].hours.push({
-          time: hour,
-          temp: temps[i],
-          code: codes[i],
-        });
-        return acumulador;
+
+        acc[dia].push({ time: hour, temp: data.temperature_2m[i] });
+
+        return acc;
       },
-      {} as Record<string, DailyWeather>,
+      {} as Record<string, { time: string; temp: number }[]>,
     );
-    const data = Object.values(dictionary);
+    this.weeklyData = times;
+    this.keys.set(Object.keys(times));
+    console.log(this.keys());
+    console.log(times);
+  }
 
-    const days = data.map((data) => {
-      const fecha = new Date(data.date);
-      const nombreDia = fecha.toLocaleDateString('es-ES', { weekday: 'long' });
-      const nombre = nombreDia.charAt(0).toUpperCase() + nombreDia.slice(1).toLowerCase();
+  chart: Chart | undefined;
 
-      return nombre;
+  createChart(key: string) {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    const data = this.weeklyData[key];
+
+    const timeX = data.map((item) => item.time);
+    const tempY = data.map((item) => item.temp);
+
+    const ctx = this.chartCanvas.nativeElement;
+
+    this.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: timeX,
+        datasets: [
+          {
+            label: 'Temperatura',
+            data: tempY,
+            borderWidth: 2,
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
     });
-
-    const temp = data.map((data) => {
-      const horaDia = data.hours.reduce((arr, curr) => {
-        const suma = arr + curr.temp / data.hours.length;
-        const redondear = Number(suma.toFixed(1));
-
-        return redondear;
-      }, 0);
-      return horaDia;
-    });
-
-    const weatherCodes = data.map((dayData) => {
-      const dailyCodes = dayData.hours.map((h) => h.code); // 24 elementos
-      console.log('dailyCodes', dailyCodes);
-      const counts: Record<number, number> = {};
-      let maxCount = 0;
-      let mostFrequent = dailyCodes[0];
-      for (const code of dailyCodes) {
-        counts[code] = (counts[code] || 0) + 1;
-        if (counts[code] > maxCount) {
-          maxCount = counts[code];
-          mostFrequent = code;
-        }
-      }
-      return mostFrequent;
-    });
-
-    this.DayW.set({ date: days, hours: temp, codes: weatherCodes });
   }
 }

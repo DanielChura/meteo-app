@@ -3,7 +3,7 @@ export interface LocationInfo {
   locality: string;
   countryName: string;
   countryCode: string;
-  principalSubdivision: string; // Ejemplo: "Lima" (Departamento)
+  principalSubdivision: string;
   latitude: number;
   longitude: number;
   continent: string;

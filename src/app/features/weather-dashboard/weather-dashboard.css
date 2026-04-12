@@ -16,7 +16,6 @@
   grid-template-rows: repeat(3, minmax(200px, auto));
   gap: 1.5rem;
   width: 100%;
-  max-width: 1400px;
   height: 100%;
 }
 
