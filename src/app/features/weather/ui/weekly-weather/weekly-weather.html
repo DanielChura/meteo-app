@@ -1,9 +1,13 @@
-@for (key of keys(); track key) {
-    <button class="day-name" (click)="createChart(key)" style="width: fit-content; padding: 0.5rem;">{{ key }}</button>
-}
-<canvas #chartJS style="  
-    height: 200px; 
-    width: 100%;
-    display: block;
-    margin-top: 1rem;
-    "></canvas>
+<div class="weekly-container">
+  <div class="days-toggle">
+    @for (key of keys(); track key) {
+      <button class="day-btn" [class.active]="activeKey() === key" (click)="createChart(key)">
+        {{ key }}
+      </button>
+    }
+  </div>
+
+  <div class="chart-wrapper">
+    <canvas #chartJS></canvas>
+  </div>
+</div>

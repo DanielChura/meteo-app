@@ -1,190 +1,98 @@
 :host {
   display: block;
   height: 100%;
+  width: 100%;
 }
 
 .air-container {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
   height: 100%;
+  width: 100%;
 }
 
-/* HERO CARD */
-.hero-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: 24px;
-  padding: 1.5rem;
+.inner-card {
+  background: var(--c-hv);
+  border: 1px solid var(--bd);
+  border-radius: var(--rad);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  align-items: flex-start;
+  transition: var(--trn);
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
-.hero-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.05);
-}
-
-.hero-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.inner-card:hover {
+  border-color: var(--bd-hv);
+  transform: translateY(-2px);
 }
 
 .label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-}
-
-.badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--fs-s);
+  font-weight: 500;
+  color: var(--txt-mu);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.2;
 }
 
-.hero-body {
+.value-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 1.5rem 0;
+  gap: 0.5rem;
+  width: 100%;
 }
 
-.aqi-value-wrapper {
+.val-unit {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 0.15rem;
 }
 
-.aqi-number {
-  font-size: 4rem;
-  font-weight: 800;
+.main-val {
+  font-size: var(--fs-3);
+  font-weight: 300;
+  color: var(--txt);
   line-height: 1;
-  color: #0f172a;
   letter-spacing: -0.02em;
 }
 
-.aqi-unit {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #94a3b8;
-  margin-top: 0.25rem;
+.unit {
+  font-size: var(--fs-s);
+  font-weight: 500;
+  color: var(--txt-mu);
 }
 
-.hero-icon {
-  opacity: 0.9;
-  filter: drop-shadow(0 0 15px currentColor);
-}
-
-.progress-bar-container {
-  height: 6px;
-  background: #f1f5f9;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  border-radius: 10px;
-  transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* POLLUTANTS GRID */
-.pollutants-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-
-.stat-card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #f1f5f9;
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  border-color: #e2e8f0;
-  background: #fdfdfd;
-  transform: scale(1.02);
-}
-
-.stat-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.stat-icon {
-  color: #94a3b8;
-  font-size: 1.2rem;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.stat-value {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-left: auto;
-  margin-right: 1.5rem;
-}
-
-.stat-quality {
-  font-size: 0.7rem;
-  font-weight: 700;
+.status {
+  font-size: var(--fs-s);
+  font-weight: 500;
+  color: var(--txt);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.3rem 0.6rem;
-  background: #f8fafc;
-  border-radius: 8px;
-  min-width: 80px;
-  text-align: center;
+  width: 100%;
+  text-align: left; 
 }
 
 @media (max-width: 1024px) {
   .air-container {
-    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
-  
-  .pollutants-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-  }
-
-  .stat-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-    padding: 1.25rem 0.75rem;
-  }
-
-  .stat-value {
-    margin: 0;
+  .inner-card {
+    padding: 0.8rem;
   }
 }
 
 @media (max-width: 640px) {
-  .pollutants-grid {
-    grid-template-columns: 1fr;
+  .air-container {
+    grid-template-columns: 1fr 1fr;
   }
 }

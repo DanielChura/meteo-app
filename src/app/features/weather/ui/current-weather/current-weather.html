@@ -1,21 +1,37 @@
-@if (current() && locationData()) {
-  <section class="weather-mini">
-    <header>
+@if (current() && locationData(); as data) {
+  <section class="weather-hero">
+    <header class="hero-header">
+      <ng-icon name="lucideMapPin" class="location-icon"></ng-icon>
       <span class="location">{{ locationData()?.city }}, {{ locationData()?.countryCode }}</span>
     </header>
 
-    <div class="temp-display">
-      <span class="value">{{ current()?.current_weather?.temperature }}°</span>
+    <div class="hero-main">
+      <div class="main-temp-wrapper">
+        <span class="temp-value">{{ current()?.current_weather?.temperature }}°</span>
+      </div>
+      
+      <div class="weather-condition">
+        <ng-icon [name]="(current()!.current_weather!.weathercode | iconWeather).icon" class="weather-icon"></ng-icon>
+        <span class="condition-text">{{ (current()!.current_weather!.weathercode | iconWeather).description }}</span>
+      </div>
     </div>
 
-    <footer class="details">
-      <span
-        >Viento <b>{{ current()?.current_weather?.windspeed }} km/h</b></span
-      >
-      <span class="separator">/</span>
-      <span
-        >Elevación <b>{{ current()?.elevation }} m</b></span
-      >
+    <footer class="hero-footer">
+      <div class="footer-item">
+        <ng-icon name="lucideWind" class="footer-icon"></ng-icon>
+        <div class="footer-texts">
+          <span class="footer-label">Viento</span>
+          <span class="footer-value">{{ current()?.current_weather?.windspeed }} km/h</span>
+        </div>
+      </div>
+      <div class="footer-separator"></div>
+      <div class="footer-item">
+        <ng-icon name="lucideMountain" class="footer-icon"></ng-icon>
+        <div class="footer-texts">
+          <span class="footer-label">Elevación</span>
+          <span class="footer-value">{{ current()?.elevation }} m</span>
+        </div>
+      </div>
     </footer>
   </section>
 }

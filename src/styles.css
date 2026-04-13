@@ -1,5 +1,59 @@
+/**
+ * UI Design System: Ghost / Naked + High Contrast
+ * 
+ * Estilo visual vanguardista y ultralimpio.
+ * - Fondo: Gradiente brillante e híbrido (Azul cielo a Cian Neón). Mantiene frescura pero soporta modo oscuro.
+ * - Superficies (Ghost Cards): Ausencia total de color de fondo (100% transparentes) para ceder total atención al fondo.
+ * - Delimitadores: Bordes blancos muy sutiles que separan y estructuran la jerarquía arquitectónica.
+ * - Interacciones: Sombra microscópica (4% opacity) y un tinte indetectable al hover, buscando un purismo plano y elástico (Flat Design).
+ * - Tipografía e Iconos: Blancos puros para maximizar el contraste técnico sobre el fondo azul/cian.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--txt);
+  min-height: 100vh;
+}
+
+:root {
+  /* Typography Scale */
+  --fs-s: 0.8rem;
+  --fs-1: 1rem;
+  --fs-2: 1.2rem;
+  --fs-3: 1.5rem;
+  --fs-l: 5rem;
+
+  /* Environment Gradient */
+  --bg-gradient: linear-gradient(180deg, #3296fa 0%, #20bdf6 55%, #4cede8 100%);
+
+  /* Ghost Surface Variables */
+  --c-bg: transparent;
+  --c-hv: rgba(255, 255, 255, 0.04);
+  --bd: rgba(255, 255, 255, 0.2);
+  --bd-hv: rgba(255, 255, 255, 0.3);
+  --card-shadow: none;
+  --card-shadow-hv: 0 8px 24px rgba(0, 0, 0, 0.04);
+  --card-blur: none;
+
+  /* Structure */
+  --rad: 16px;
+  --pad: 1.5rem;
+  --gap: 1.25rem;
+
+  /* Interactions */
+  --trn: all 0.3s ease-out;
+
+  /* Content Typography */
+  --txt: #ffffff;
+  --txt-mu: rgba(255, 255, 255, 0.7);
 }

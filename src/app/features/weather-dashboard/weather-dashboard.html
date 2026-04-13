@@ -1,21 +1,27 @@
-<main class="dashboard-container">
-  <div class="grid-layout">
+<main class="dashboard-wrapper">
+  <div class="glass-grid-layout">
+    <!-- Centro Arriba: Clima Actual (Foco principal) -->
     <app-current-weather
-      class="grid-item item-current"
+      class="glass-card area-current"
       [current]="currentWeather"
       [locationData]="location"
-    ></app-current-weather>
+    >
+    </app-current-weather>
 
-    <app-hourly-weather
-      class="grid-item item-hourly"
-      [hourly]="currentWeather"
-    ></app-hourly-weather>
-    <app-air class="grid-item item-air" [air]="airQuality"></app-air>
+    <!-- Derecha: Lista vertical (Más largo que ancho) -->
+    <app-hourly-weather class="glass-card area-hourly" [hourly]="currentWeather">
+    </app-hourly-weather>
 
-    <div class="grid-item empty-placeholder item-uv">
+    <!-- Izquierda Arriba: Calidad del Aire (Cuadrado compacto) -->
+    <app-air class="glass-card area-air" [air]="airQuality"> </app-air>
+
+    <!-- Izquierda Abajo: Índice UV (Cuadrado compacto) -->
+    <div class="glass-card area-uv empty-placeholder">
       <span>UV Index</span>
     </div>
-    <app-weekly-weather class="grid-item item-weekly" [weekly]="weeklyWeather">
+
+    <!-- Centro Abajo: Gráfico Semanal (Cuadrado más grande) -->
+    <app-weekly-weather class="glass-card area-weekly" [weekly]="weeklyWeather">
     </app-weekly-weather>
   </div>
 </main>

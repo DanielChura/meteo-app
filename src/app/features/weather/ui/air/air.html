@@ -1,71 +1,65 @@
 @if (air(); as data) {
   <div class="air-container">
-    <!-- Hero Card: AQI Principal -->
-    <div class="hero-card" [style.border-color]="(data.current.european_aqi | europeanAqi).color + '40'">
-      <div class="hero-header">
-        <span class="label">Calidad del Aire</span>
-        <div class="badge" [style.background-color]="(data.current.european_aqi | europeanAqi).color + '20'" [style.color]="(data.current.european_aqi | europeanAqi).color">
-          {{ (data.current.european_aqi | europeanAqi).label }}
+    
+    <!-- AQI Card -->
+    <div class="inner-card">
+      <span class="label">Calidad (AQI)</span>
+      
+      <div class="value-row">
+        <ng-icon name="lucideActivity" size="2rem" class="card-icon" [style.color]="(data.current.european_aqi | europeanAqi).color"></ng-icon>
+        <div class="val-unit">
+          <span class="main-val">{{ data.current.european_aqi }}</span>
+          <span class="unit">Idx</span>
         </div>
       </div>
       
-      <div class="hero-body">
-        <div class="aqi-value-wrapper">
-          <span class="aqi-number">{{ data.current.european_aqi }}</span>
-          <span class="aqi-unit">EAQI</span>
+      <span class="status">{{ (data.current.european_aqi | europeanAqi).label }}</span>
+    </div>
+
+    <!-- PM2.5 Card -->
+    <div class="inner-card">
+      <span class="label">Polvo Fino (PM2.5)</span>
+      
+      <div class="value-row">
+        <ng-icon name="lucideWaves" size="2rem" class="card-icon" [style.color]="(data.current.pm2_5 | pm25Pipe).color"></ng-icon>
+        <div class="val-unit">
+          <span class="main-val">{{ data.current.pm2_5 }}</span>
+          <span class="unit">µg/m³</span>
         </div>
-        <ng-icon
-          name="lucideActivity"
-          size="3.5rem"
-          class="hero-icon"
-          [style.color]="(data.current.european_aqi | europeanAqi).color"
-        ></ng-icon>
       </div>
       
-      <div class="hero-footer">
-        <div class="progress-bar-container">
-          <div class="progress-bar" [style.width.%]="data.current.european_aqi" [style.background-color]="(data.current.european_aqi | europeanAqi).color"></div>
-        </div>
-      </div>
+      <span class="status">{{ (data.current.pm2_5 | pm25Pipe).label }}</span>
     </div>
 
-    <!-- Pollutants Grid -->
-    <div class="pollutants-grid">
-      <!-- PM2.5 -->
-      <div class="stat-card">
-        <div class="stat-header">
-          <ng-icon name="lucideWaves" class="stat-icon"></ng-icon>
-          <span class="stat-label">PM2.5</span>
+    <!-- PM10 Card -->
+    <div class="inner-card">
+      <span class="label">Polvo (PM10)</span>
+      
+      <div class="value-row">
+        <ng-icon name="lucideWind" size="2rem" class="card-icon" [style.color]="(data.current.pm10 | pm10Pipe).color"></ng-icon>
+        <div class="val-unit">
+          <span class="main-val">{{ data.current.pm10 }}</span>
+          <span class="unit">µg/m³</span>
         </div>
-        <div class="stat-value">{{ data.current.pm2_5 }}</div>
-        <span class="stat-quality" [style.color]="(data.current.pm2_5 | pm25Pipe).color">
-          {{ (data.current.pm2_5 | pm25Pipe).label }}
-        </span>
       </div>
-
-      <!-- PM10 -->
-      <div class="stat-card">
-        <div class="stat-header">
-          <ng-icon name="lucideWind" class="stat-icon"></ng-icon>
-          <span class="stat-label">PM10</span>
-        </div>
-        <div class="stat-value">{{ data.current.pm10 }}</div>
-        <span class="stat-quality" [style.color]="(data.current.pm10 | pm10Pipe).color">
-          {{ (data.current.pm10 | pm10Pipe).label }}
-        </span>
-      </div>
-
-      <!-- Ozone -->
-      <div class="stat-card">
-        <div class="stat-header">
-          <ng-icon name="lucideShieldCheck" class="stat-icon"></ng-icon>
-          <span class="stat-label">Ozono</span>
-        </div>
-        <div class="stat-value">{{ data.current.ozone }}</div>
-        <span class="stat-quality" [style.color]="(data.current.ozone | ozonePipe).color">
-          {{ (data.current.ozone | ozonePipe).label }}
-        </span>
-      </div>
+      
+      <span class="status">{{ (data.current.pm10 | pm10Pipe).label }}</span>
     </div>
+
+    <!-- Ozone Card -->
+    <div class="inner-card">
+      <span class="label">Ozono (O3)</span>
+      
+      <div class="value-row">
+        <ng-icon name="lucideShieldCheck" size="2rem" class="card-icon" [style.color]="(data.current.ozone | ozonePipe).color"></ng-icon>
+        <div class="val-unit">
+          <span class="main-val">{{ data.current.ozone }}</span>
+          <span class="unit">µg/m³</span>
+        </div>
+      </div>
+      
+      <span class="status">{{ (data.current.ozone | ozonePipe).label }}</span>
+    </div>
+
   </div>
 }

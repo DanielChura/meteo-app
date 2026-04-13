@@ -1,12 +1,21 @@
 <main class="hourly-weather-list">
   @for (day of DayW().date; track day; let i = $index) {
     <div class="day-card">
-      <span class="day-name">{{ day }}</span>
-      <div class="weather-info">
-        <ng-icon [name]="(DayW().codes[i] | iconWeather).icon" size="1.6rem" class="weather-icon"></ng-icon>
+      <div class="day-info">
+        <span class="day-name">{{ day }}</span>
         <span class="weather-desc">{{ (DayW().codes[i] | iconWeather).description }}</span>
       </div>
-      <span class="day-temp">{{ DayW().tempMax[i] }}/{{ DayW().tempMin[i] }}°</span>
+
+      <ng-icon
+        [name]="(DayW().codes[i] | iconWeather).icon"
+        size="1.8rem"
+        class="weather-icon"
+      ></ng-icon>
+
+      <div class="day-temp">
+        <span class="temp-max">{{ DayW().tempMax[i] }}°</span>
+        <span class="temp-min">{{ DayW().tempMin[i] }}°</span>
+      </div>
     </div>
   }
 </main>

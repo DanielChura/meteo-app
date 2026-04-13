@@ -1,87 +1,91 @@
 .hourly-weather-list {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .day-card {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  gap: 0.75rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 0 1.2rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: var(--trn);
 }
 
 .day-card:hover {
-  background: #ffffff;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  background: var(--bg);
+  border-color: var(--bd);
+}
+
+.day-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .day-name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--txt);
   text-transform: capitalize;
-}
-
-.weather-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.weather-icon {
-  color: #1e293b;
+  letter-spacing: 0.03em;
+  line-height: 1;
 }
 
 .weather-desc {
-  font-size: 0.7rem;
-  color: #94a3b8;
-  text-align: center;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--txt-mu);
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+  line-height: 1;
+}
+
+.weather-icon {
+  color: var(--txt);
+  justify-self: center;
 }
 
 .day-temp {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.temp-max {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--txt);
+  line-height: 1;
+}
+
+.temp-min {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--txt-mu);
+  line-height: 1;
 }
 
 @media (max-width: 1024px) {
-  .hourly-weather-list {
-    grid-template-columns: repeat(4, 1fr);
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
+  .day-card {
+    padding: 0.5rem 1rem;
+    min-height: 70px;
   }
 }
 
 @media (max-width: 640px) {
-  .hourly-weather-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .day-card {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.75rem 1.25rem;
-  }
-  
-  .weather-info {
-    flex-direction: row;
-    gap: 0.5rem;
+  .weather-desc {
+    display: none;
   }
 }

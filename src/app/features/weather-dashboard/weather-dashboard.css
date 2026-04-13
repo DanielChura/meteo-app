@@ -1,90 +1,107 @@
-.dashboard-container {
+.dashboard-wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 2rem;
+  overflow: hidden;
+  padding: var(--pad);
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #1a1a1a;
-  background-color: #f2f5f7; 
+  background: transparent;
+  z-index: 1;
 }
 
-.grid-layout {
+.glass-grid-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, minmax(200px, auto));
-  gap: 1.5rem;
-  width: 100%;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+  max-width: 1400px;
   height: 100%;
+  grid-template-areas:
+    "air current hourly"
+    "uv  weekly  hourly";
 }
 
-.grid-item {
-  background-color: #ffffff;
-  border-radius: 28px;
-  padding: 1.8rem;
+.area-current { grid-area: current; }
+.area-air     { grid-area: air; }
+.area-hourly  { grid-area: hourly; }
+.area-uv      { grid-area: uv; }
+.area-weekly  { grid-area: weekly; }
+
+.glass-card {
+  background: var(--c-bg);
+  backdrop-filter: var(--card-blur, none);
+  -webkit-backdrop-filter: var(--card-blur, none);
+  border: 1px solid var(--bd);
+  border-radius: var(--rad);
+  padding: var(--pad);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: var(--trn);
+  box-shadow: var(--card-shadow, none);
 }
 
-.item-current { 
-  grid-column: 1 / 2; 
-  grid-row: 1 / 2;    
-  background-color: #ffffff;
+.glass-card:hover {
+  background: var(--c-hv);
+  border-color: var(--bd-hv);
+  box-shadow: var(--card-shadow-hv, none);
+  transform: translateY(-2px);
+}
+
+.area-current {
   justify-content: center;
-}
-
-.item-air { 
-  grid-column: 2 / 4; 
-  grid-row: 1 / 2; 
-}
-
-.item-hourly { 
-  grid-column: 1 / 4; 
-  grid-row: 2 / 3; 
-}
-
-.item-uv { 
-  grid-column: 1 / 2; 
-  grid-row: 3 / 4; 
-}
-
-.item-humidity { 
-  grid-column: 2 / 4; 
-  grid-row: 3 / 4; 
-}
-
-.item-weekly { 
-  grid-column: 4 / 5; 
-  grid-row: 1 / 4; 
+  align-items: center;
+  text-align: center;
 }
 
 .empty-placeholder {
   justify-content: center;
   align-items: center;
-  background-color: #eaeef1;
 }
 
 .empty-placeholder span {
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  color: #999;
+  font-size: 0.9rem;
+  font-weight: 400; 
+  letter-spacing: 0.05em; 
+  color: var(--txt-mu);
 }
 
-@media (max-width: 1200px) {
-  .grid-layout {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 1024px) {
+  .dashboard-wrapper {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
   }
-  .item-current { grid-column: 1 / 2; grid-row: 1 / 2; }
-  .item-air     { grid-column: 2 / 4; grid-row: 1 / 2; }
-  .item-hourly  { grid-column: 1 / 4; grid-row: 2 / 3; }
-  .item-weekly  { grid-column: 1 / 4; grid-row: 4 / 5; }
-  .item-uv      { grid-column: 1 / 2; grid-row: 3 / 4; }
-  .item-humidity{ grid-column: 2 / 4; grid-row: 3 / 4; }
+  
+  .glass-grid-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+    grid-template-areas:
+      "current current"
+      "air     uv"
+      "weekly  weekly"
+      "hourly  hourly";
+  }
 }
 
 @media (max-width: 768px) {
-  .grid-layout { display: flex; flex-direction: column; }
+  .dashboard-wrapper {
+    padding: 1rem;
+  }
+  
+  .glass-grid-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .glass-card {
+    min-height: 200px;
+    padding: 1.5rem;
+    border-radius: calc(var(--rad) - 4px);
+  }
 }
