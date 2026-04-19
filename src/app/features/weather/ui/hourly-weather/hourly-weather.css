@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  gap: 0.1rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -14,15 +14,6 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0 1.2rem;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  transition: var(--trn);
-}
-
-.day-card:hover {
-  background: var(--bg);
-  border-color: var(--bd);
 }
 
 .day-info {

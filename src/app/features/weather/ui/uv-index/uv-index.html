@@ -1,0 +1,69 @@
+@if (uvIndex(); as data) {
+  <div class="uv-grid-container">
+    
+    <article class="ghost-inner-card high-fidelity-card">
+      
+      <div class="card-main">
+        <header class="card-header">
+          <div class="header-title">
+            <ng-icon name="lucideSun" class="header-icon" [style.color]="uvData().color"></ng-icon>
+            <span class="header-label">Índice UV</span>
+          </div>
+          <span class="status-badge" [style.color]="uvData().color">{{ uvData().status }}</span>
+        </header>
+        
+        <div class="value-block">
+          <span class="main-value">{{ uvData().value }}</span>
+        </div>
+
+        <div class="horizontal-gauge-area">
+          <div class="h-track">
+            <div class="h-fill" 
+                 [style.width.%]="uvData().percentage"
+                 [style.backgroundColor]="uvData().color"
+                 [style.boxShadow]="'0 0 10px ' + uvData().color">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="horizontal-divider"></div>
+        <p class="recommendation-text">{{ uvData().recommendation }}</p>
+      </footer>
+    </article>
+
+    <article class="ghost-inner-card high-fidelity-card">
+      
+      <div class="card-main">
+        <header class="card-header">
+          <div class="header-title">
+            <ng-icon name="lucideDroplets" class="header-icon" [style.color]="humidityData().color"></ng-icon>
+            <span class="header-label">Humedad</span>
+          </div>
+          <span class="status-badge" [style.color]="humidityData().color">{{ humidityData().status }}</span>
+        </header>
+
+        <div class="value-block">
+          <span class="main-value">{{ humidityData().value }}<small class="unit-pct">%</small></span>
+        </div>
+
+        <div class="horizontal-gauge-area">
+          <div class="h-track">
+            <div class="h-fill" 
+                 [style.width.%]="humidityData().percentage"
+                 [style.backgroundColor]="humidityData().color"
+                 [style.boxShadow]="'0 0 10px ' + humidityData().color">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="horizontal-divider"></div>
+        <p class="recommendation-text">{{ humidityData().recommendation }}</p>
+      </footer>
+    </article>
+
+  </div>
+}

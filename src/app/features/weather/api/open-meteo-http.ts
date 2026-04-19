@@ -18,8 +18,9 @@ export class OpenMeteoHttp {
       .set('latitude', lat.toString())
       .set('longitude', lon.toString())
       .set('hourly', 'temperature_2m,weathercode')
-      .set('current_weather', 'true')
-      .set('daily', 'temperature_2m_max,temperature_2m_min,weathercode');
+      .set('current', 'temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m,is_day,weather_code,uv_index')
+      .set('daily', 'temperature_2m_max,temperature_2m_min,weathercode')
+      .set('timezone', 'auto');
 
     return this.http.get<WeatherResponse>(`${this.URL_BASE}/forecast`, { params });
   }

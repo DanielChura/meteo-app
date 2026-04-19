@@ -15,7 +15,7 @@
 .days-toggle {
   display: flex;
   gap: 0.6rem;
-  overflow-x: auto;
+  overflow-x: visible;
   padding-bottom: 0.4rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -26,22 +26,18 @@
 }
 
 .day-btn {
-  background: var(--c-hv);
-  border: 1px solid var(--bd);
+  z-index: 1;
+  background: transparent;
   color: var(--txt-mu);
-  border-radius: var(--rad);
   padding: 0.4rem 1.2rem;
   font-size: var(--fs-s);
   font-weight: 400;
   cursor: pointer;
   text-transform: capitalize;
-  transition: var(--trn);
   white-space: nowrap;
 }
 
 .day-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--bd-hv);
   color: var(--txt);
 }
 

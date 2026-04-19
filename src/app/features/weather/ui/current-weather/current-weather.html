@@ -7,21 +7,26 @@
 
     <div class="hero-main">
       <div class="main-temp-wrapper">
-        <span class="temp-value">{{ current()?.current_weather?.temperature }}°</span>
+        <span class="temp-value">{{ current()?.current?.temperature_2m }}°</span>
       </div>
-      
+
       <div class="weather-condition">
-        <ng-icon [name]="(current()!.current_weather!.weathercode | iconWeather).icon" class="weather-icon"></ng-icon>
-        <span class="condition-text">{{ (current()!.current_weather!.weathercode | iconWeather).description }}</span>
+        <ng-icon
+          [name]="(current()!.current!.weather_code | iconWeather).icon"
+          class="weather-icon"
+        ></ng-icon>
+        <span class="condition-text">{{
+          (current()!.current!.weather_code | iconWeather).description
+        }}</span>
       </div>
     </div>
 
-    <footer class="hero-footer">
+    <footer class="ghost-inner-card hero-footer">
       <div class="footer-item">
         <ng-icon name="lucideWind" class="footer-icon"></ng-icon>
         <div class="footer-texts">
           <span class="footer-label">Viento</span>
-          <span class="footer-value">{{ current()?.current_weather?.windspeed }} km/h</span>
+          <span class="footer-value">{{ current()?.current?.wind_speed_10m }} km/h</span>
         </div>
       </div>
       <div class="footer-separator"></div>

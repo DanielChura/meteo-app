@@ -1,18 +1,18 @@
 import { Component, input } from '@angular/core';
-import { CurrentWeather, WeatherResponse } from '../../models/DTOresponse';
+import { WeatherResponse } from '../../models/DTOresponse';
 import { LocationInfo } from '../../models/DTOgeoCode';
 import { IconWeatherPipe } from '../../../../core/pipes/icon-weather-pipe';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { 
-  lucideMapPin, 
-  lucideWind, 
-  lucideMountain, 
-  lucideSun, 
-  lucideCloud, 
-  lucideCloudFog, 
-  lucideCloudRain, 
-  lucideSnowflake, 
-  lucideCloudLightning 
+import {
+  lucideMapPin,
+  lucideWind,
+  lucideMountain,
+  lucideSun,
+  lucideCloud,
+  lucideCloudFog,
+  lucideCloudRain,
+  lucideSnowflake,
+  lucideCloudLightning,
 } from '@ng-icons/lucide';
 
 @Component({
@@ -29,8 +29,8 @@ import {
       lucideCloudFog,
       lucideCloudRain,
       lucideSnowflake,
-      lucideCloudLightning
-    })
+      lucideCloudLightning,
+    }),
   ],
   templateUrl: './current-weather.html',
   styleUrl: './current-weather.css',

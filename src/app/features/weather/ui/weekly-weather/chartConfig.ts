@@ -36,8 +36,6 @@ export const options: ChartOptions<'line'> = {
     padding: {
       top: 20,
       bottom: 5,
-      left: 10,
-      right: 10
     }
   },
   scales: {

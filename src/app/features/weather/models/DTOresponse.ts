@@ -6,32 +6,36 @@ export interface WeatherResponse {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
-  current_weather_units: CurrentWeatherUnits;
-  current_weather: CurrentWeather;
+  current_units: CurrentUnits;
+  current: Current;
   hourly_units: HourlyUnits;
   hourly: Hourly;
   daily_units: DailyUnits;
   daily: Daily;
 }
 
-export interface CurrentWeather {
+export interface Current {
   time: string;
   interval: number;
-  temperature: number;
-  windspeed: number;
-  winddirection: number;
+  temperature_2m: number;
+  relative_humidity_2m: number;
+  wind_speed_10m: number;
+  wind_direction_10m: number;
   is_day: number;
-  weathercode: number;
+  weather_code: number;
+  uv_index: number;
 }
 
-export interface CurrentWeatherUnits {
+export interface CurrentUnits {
   time: string;
   interval: string;
-  temperature: string;
-  windspeed: string;
-  winddirection: string;
+  temperature_2m: string;
+  relative_humidity_2m: string;
+  wind_speed_10m: string;
+  wind_direction_10m: string;
   is_day: string;
-  weathercode: string;
+  weather_code: string;
+  uv_index: string;
 }
 
 export interface Daily {

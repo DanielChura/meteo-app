@@ -1,8 +1,7 @@
 @if (air(); as data) {
   <div class="air-container">
     
-    <!-- AQI Card -->
-    <div class="inner-card">
+    <div class="ghost-inner-card inner-card">
       <span class="label">Calidad (AQI)</span>
       
       <div class="value-row">
@@ -16,8 +15,7 @@
       <span class="status">{{ (data.current.european_aqi | europeanAqi).label }}</span>
     </div>
 
-    <!-- PM2.5 Card -->
-    <div class="inner-card">
+    <div class="ghost-inner-card inner-card">
       <span class="label">Polvo Fino (PM2.5)</span>
       
       <div class="value-row">
@@ -31,8 +29,7 @@
       <span class="status">{{ (data.current.pm2_5 | pm25Pipe).label }}</span>
     </div>
 
-    <!-- PM10 Card -->
-    <div class="inner-card">
+    <div class="ghost-inner-card inner-card">
       <span class="label">Polvo (PM10)</span>
       
       <div class="value-row">
@@ -46,8 +43,7 @@
       <span class="status">{{ (data.current.pm10 | pm10Pipe).label }}</span>
     </div>
 
-    <!-- Ozone Card -->
-    <div class="inner-card">
+    <div class="ghost-inner-card inner-card">
       <span class="label">Ozono (O3)</span>
       
       <div class="value-row">

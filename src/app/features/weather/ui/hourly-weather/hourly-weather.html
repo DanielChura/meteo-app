@@ -1,6 +1,6 @@
 <main class="hourly-weather-list">
   @for (day of DayW().date; track day; let i = $index) {
-    <div class="day-card">
+    <div class="ghost-inner-card day-card">
       <div class="day-info">
         <span class="day-name">{{ day }}</span>
         <span class="weather-desc">{{ (DayW().codes[i] | iconWeather).description }}</span>

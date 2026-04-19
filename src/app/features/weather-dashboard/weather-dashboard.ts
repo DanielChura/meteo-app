@@ -9,10 +9,11 @@ import { HourlyWeather } from '../weather/ui/hourly-weather/hourly-weather';
 import { Air } from '../weather/ui/air/air';
 import { AirQualityResponse } from '../weather/models/DTOairResponse';
 import { OpenAirHttp } from '../weather/api/open-air-https';
+import { UvIndex } from '../weather/ui/uv-index/uv-index';
 
 @Component({
   selector: 'app-weather-dashboard',
-  imports: [CurrentWeatherComponent, WeeklyWeatherComponent, HourlyWeather, Air],
+  imports: [CurrentWeatherComponent, WeeklyWeatherComponent, HourlyWeather, Air, UvIndex],
   templateUrl: './weather-dashboard.html',
   styleUrl: './weather-dashboard.css',
 })

@@ -1,7 +1,7 @@
 <div class="weekly-container">
   <div class="days-toggle">
     @for (key of keys(); track key) {
-      <button class="day-btn" [class.active]="activeKey() === key" (click)="createChart(key)">
+      <button class="ghost-inner-card day-btn" [class.active]="activeKey() === key" (click)="createChart(key)">
         {{ key }}
       </button>
     }
