@@ -35,7 +35,7 @@ import {
   templateUrl: './current-weather.html',
   styleUrl: './current-weather.css',
 })
-export class CurrentWeatherComponent {
+export class CurrentWeather {
   current = input<WeatherResponse | null>();
   locationData = input<LocationInfo | null>();
 }

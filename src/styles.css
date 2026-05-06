@@ -9,7 +9,7 @@
  * - Tipografía e Iconos: Blancos puros para maximizar el contraste técnico sobre el fondo azul/cian.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@400;500&family=Lexend:wght@400;500&family=Manrope:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500&family=DM+Sans:wght@400;500&display=swap');
 
 * {
   padding: 0;
@@ -18,25 +18,32 @@
 }
 
 body {
-  font-family: 'Manrope', sans-serif;
-  background: black;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
   background-attachment: fixed;
   color: var(--txt);
   min-height: 100vh;
 }
 
+.bg-iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  border: none;
+  transform: scale(-1, -1);
+}
+
 :root {
-  /* Typography Scale */
   --fs-s: 0.8rem;
   --fs-1: 1rem;
   --fs-2: 1.2rem;
-  --fs-3: 1.5rem;
+  --fs-3: 2rem;
   --fs-l: 5rem;
 
-  /* Environment Gradient */
-  --bg-gradient: linear-gradient(180deg, #3296fa 0%, #20bdf6 55%, #4cede8 100%);
-
-  /* Ghost Surface Variables */
   --c-bg: transparent;
   --c-hv: rgba(255, 255, 255, 0.04);
   --bd: rgba(255, 255, 255, 0.2);
@@ -45,15 +52,12 @@ body {
   --card-shadow-hv: 0 8px 24px rgba(0, 0, 0, 0.04);
   --card-blur: none;
 
-  /* Structure */
   --rad: 16px;
   --pad: 1.5rem;
   --gap: 1.25rem;
 
-  /* Interactions */
   --trn: all 0.3s ease-out;
 
-  /* Content Typography */
   --txt: #ffffff;
   --txt-mu: rgba(255, 255, 255, 0.7);
 }
@@ -81,13 +85,96 @@ body {
 }
 
 .ghost-inner-card {
-    border: 1px solid var(--bd);
+  border: 1px solid var(--bd);
   border-radius: var(--rad);
   transition: var(--trn);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .ghost-inner-card:hover {
   border-color: var(--bd-hv);
   transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.txt-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--txt-mu);
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+}
+
+.txt-value {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--txt);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.txt-value-sm {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--txt);
+  line-height: 1.2;
+}
+
+.txt-status {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.txt-unit {
+  font-size: 1.2rem;
+  color: var(--txt-mu);
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+.txt-recommendation {
+  font-size: 0.82rem;
+  color: var(--txt-mu);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.gauge-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition:
+    width 1s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
 }

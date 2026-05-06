@@ -1,19 +1,19 @@
 import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { OpenMeteoHttp } from '../weather/api/open-meteo-http';
 import { LocationService } from '../weather/api/location';
-import { CurrentWeatherComponent } from '../weather/ui/current-weather/current-weather';
-import { WeeklyWeatherComponent } from '../weather/ui/weekly-weather/weekly-weather';
+import { CurrentWeather } from '../weather/ui/current-weather/current-weather';
+import { HourlyChart } from '../weather/ui/hourly-chart/hourly-chart';
 import { WeatherResponse } from '../weather/models/DTOresponse';
 import { LocationInfo } from '../weather/models/DTOgeoCode';
-import { HourlyWeather } from '../weather/ui/hourly-weather/hourly-weather';
-import { Air } from '../weather/ui/air/air';
+import { DailyForecast } from '../weather/ui/daily-forecast/daily-forecast';
+import { AirQuality } from '../weather/ui/air-quality/air-quality';
 import { AirQualityResponse } from '../weather/models/DTOairResponse';
 import { OpenAirHttp } from '../weather/api/open-air-https';
 import { UvIndex } from '../weather/ui/uv-index/uv-index';
 
 @Component({
   selector: 'app-weather-dashboard',
-  imports: [CurrentWeatherComponent, WeeklyWeatherComponent, HourlyWeather, Air, UvIndex],
+  imports: [CurrentWeather, HourlyChart, DailyForecast, AirQuality, UvIndex],
   templateUrl: './weather-dashboard.html',
   styleUrl: './weather-dashboard.css',
 })

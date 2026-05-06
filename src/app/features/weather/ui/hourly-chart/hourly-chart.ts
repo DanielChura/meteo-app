@@ -1,7 +1,7 @@
 import { Component, ElementRef, input, OnChanges, signal, ViewChild } from '@angular/core';
 import { WeatherResponse } from '../../models/DTOresponse';
 import { Chart } from 'chart.js/auto';
-import { options } from './chartConfig';
+import { options } from './chart-config';
 export interface HourlyDetail {
   time: string;
   temp: number;
@@ -13,11 +13,11 @@ export interface DayData {
 }
 
 @Component({
-  selector: 'app-weekly-weather',
-  templateUrl: './weekly-weather.html',
-  styleUrl: './weekly-weather.css',
+  selector: 'app-hourly-chart',
+  templateUrl: './hourly-chart.html',
+  styleUrl: './hourly-chart.css',
 })
-export class WeeklyWeatherComponent implements OnChanges {
+export class HourlyChart implements OnChanges {
   weekly = input<WeatherResponse | null>();
   @ViewChild('chartJS') chartCanvas!: ElementRef<HTMLCanvasElement>;
 

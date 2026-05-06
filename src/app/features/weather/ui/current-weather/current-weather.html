@@ -7,7 +7,9 @@
 
     <div class="hero-main">
       <div class="main-temp-wrapper">
-        <span class="temp-value">{{ current()?.current?.temperature_2m }}°</span>
+        <span class="temp-value"
+          >{{ current()?.current?.temperature_2m }}<span class="degree">°</span></span
+        >
       </div>
 
       <div class="weather-condition">
@@ -21,20 +23,22 @@
       </div>
     </div>
 
-    <footer class="ghost-inner-card hero-footer">
-      <div class="footer-item">
-        <ng-icon name="lucideWind" class="footer-icon"></ng-icon>
-        <div class="footer-texts">
-          <span class="footer-label">Viento</span>
-          <span class="footer-value">{{ current()?.current?.wind_speed_10m }} km/h</span>
+    <footer class="extra-info">
+      <div class="info-item">
+        <ng-icon name="lucideWind" class="info-icon"></ng-icon>
+        <div class="info-texts">
+          <span class="txt-label">Viento</span>
+          <span class="txt-status">{{ current()?.current?.wind_speed_10m }} km/h</span>
         </div>
       </div>
-      <div class="footer-separator"></div>
-      <div class="footer-item">
-        <ng-icon name="lucideMountain" class="footer-icon"></ng-icon>
-        <div class="footer-texts">
-          <span class="footer-label">Elevación</span>
-          <span class="footer-value">{{ current()?.elevation }} m</span>
+
+      <div class="info-separator"></div>
+
+      <div class="info-item">
+        <ng-icon name="lucideMountain" class="info-icon"></ng-icon>
+        <div class="info-texts">
+          <span class="txt-label">Elevación</span>
+          <span class="txt-status">{{ current()?.elevation }} m</span>
         </div>
       </div>
     </footer>

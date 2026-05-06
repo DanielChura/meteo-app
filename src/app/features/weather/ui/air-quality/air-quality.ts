@@ -14,7 +14,7 @@ import {
 import { NgIcon, provideIcons } from '@ng-icons/core';
 
 @Component({
-  selector: 'app-air',
+  selector: 'app-air-quality',
   standalone: true,
   imports: [EuropeanAqiPipe, OzonePipePipe, Pm25PipePipe, Pm10PipePipe, NgIcon],
   providers: [
@@ -26,9 +26,9 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
       lucideLeaf,
     }),
   ],
-  templateUrl: './air.html',
-  styleUrl: './air.css',
+  templateUrl: './air-quality.html',
+  styleUrl: './air-quality.css',
 })
-export class Air {
+export class AirQuality {
   air = input<AirQualityResponse | null>();
 }

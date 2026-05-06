@@ -1,67 +1,54 @@
 @if (uvIndex(); as data) {
   <div class="uv-grid-container">
-    
     <article class="ghost-inner-card high-fidelity-card">
-      
-      <div class="card-main">
-        <header class="card-header">
-          <div class="header-title">
-            <ng-icon name="lucideSun" class="header-icon" [style.color]="uvData().color"></ng-icon>
-            <span class="header-label">Índice UV</span>
-          </div>
-          <span class="status-badge" [style.color]="uvData().color">{{ uvData().status }}</span>
-        </header>
-        
-        <div class="value-block">
-          <span class="main-value">{{ uvData().value }}</span>
+      <header class="card-header">
+        <div class="header-title">
+          <ng-icon name="lucideSun" class="header-icon" [style.color]="uvData().color"></ng-icon>
+          <span class="txt-label">Índice UV</span>
         </div>
+        <span class="txt-status" [style.color]="uvData().color">{{ uvData().status }}</span>
+      </header>
 
-        <div class="horizontal-gauge-area">
-          <div class="h-track">
-            <div class="h-fill" 
-                 [style.width.%]="uvData().percentage"
-                 [style.backgroundColor]="uvData().color"
-                 [style.boxShadow]="'0 0 10px ' + uvData().color">
-            </div>
+      <div class="card-body">
+        <span class="txt-value">{{ uvData().value }}</span>
+        <div class="gauge-track">
+          <div class="gauge-fill"
+               [style.width.%]="uvData().percentage"
+               [style.backgroundColor]="uvData().color"
+               [style.boxShadow]="'0 0 10px ' + uvData().color">
           </div>
         </div>
       </div>
 
       <footer class="card-footer">
-        <div class="horizontal-divider"></div>
-        <p class="recommendation-text">{{ uvData().recommendation }}</p>
+        <p class="txt-recommendation">{{ uvData().recommendation }}</p>
       </footer>
     </article>
-
     <article class="ghost-inner-card high-fidelity-card">
-      
-      <div class="card-main">
-        <header class="card-header">
-          <div class="header-title">
-            <ng-icon name="lucideDroplets" class="header-icon" [style.color]="humidityData().color"></ng-icon>
-            <span class="header-label">Humedad</span>
-          </div>
-          <span class="status-badge" [style.color]="humidityData().color">{{ humidityData().status }}</span>
-        </header>
-
-        <div class="value-block">
-          <span class="main-value">{{ humidityData().value }}<small class="unit-pct">%</small></span>
+      <header class="card-header">
+        <div class="header-title">
+          <ng-icon name="lucideDroplets" class="header-icon" [style.color]="humidityData().color"></ng-icon>
+          <span class="txt-label">Humedad</span>
         </div>
+        <span class="txt-status" [style.color]="humidityData().color">{{ humidityData().status }}</span>
+      </header>
 
-        <div class="horizontal-gauge-area">
-          <div class="h-track">
-            <div class="h-fill" 
-                 [style.width.%]="humidityData().percentage"
-                 [style.backgroundColor]="humidityData().color"
-                 [style.boxShadow]="'0 0 10px ' + humidityData().color">
-            </div>
+      <div class="card-body">
+        <div class="value-block">
+          <span class="txt-value">{{ humidityData().value }}</span>
+          <small class="txt-unit">%</small>
+        </div>
+        <div class="gauge-track">
+          <div class="gauge-fill"
+               [style.width.%]="humidityData().percentage"
+               [style.backgroundColor]="humidityData().color"
+               [style.boxShadow]="'0 0 10px ' + humidityData().color">
           </div>
         </div>
       </div>
 
       <footer class="card-footer">
-        <div class="horizontal-divider"></div>
-        <p class="recommendation-text">{{ humidityData().recommendation }}</p>
+        <p class="txt-recommendation">{{ humidityData().recommendation }}</p>
       </footer>
     </article>
 

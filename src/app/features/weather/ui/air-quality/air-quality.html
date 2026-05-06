@@ -1,0 +1,69 @@
+@if (air(); as data) {
+  <div class="air-container">
+
+    <div class="ghost-inner-card inner-card">
+      <span class="txt-label">Índice de Calidad del Aire (AQI)</span>
+
+      <div class="card-body">
+        <div class="value-row">
+          <ng-icon name="lucideActivity" class="card-icon" [style.color]="(data.current.european_aqi | europeanAqi).color"></ng-icon>
+          <div class="val-unit">
+            <span class="txt-value">{{ data.current.european_aqi }}</span>
+            <span class="txt-unit">Idx</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="txt-status" [style.color]="(data.current.european_aqi | europeanAqi).color">{{ (data.current.european_aqi | europeanAqi).label }}</span>
+    </div>
+
+    <div class="ghost-inner-card inner-card">
+      <span class="txt-label">Partículas de Polvo Fino (PM2.5)</span>
+
+      <div class="card-body">
+        <div class="value-row">
+          <ng-icon name="lucideWaves" class="card-icon" [style.color]="(data.current.pm2_5 | pm25Pipe).color"></ng-icon>
+          <div class="val-unit">
+            <span class="txt-value">{{ data.current.pm2_5 }}</span>
+            <span class="txt-unit">µg/m³</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="txt-status" [style.color]="(data.current.pm2_5 | pm25Pipe).color">{{ (data.current.pm2_5 | pm25Pipe).label }}</span>
+    </div>
+
+    <div class="ghost-inner-card inner-card">
+      <span class="txt-label">Partículas de Polvo (PM10)</span>
+
+      <div class="card-body">
+        <div class="value-row">
+          <ng-icon name="lucideWind" class="card-icon" [style.color]="(data.current.pm10 | pm10Pipe).color"></ng-icon>
+          <div class="val-unit">
+            <span class="txt-value">{{ data.current.pm10 }}</span>
+            <span class="txt-unit">µg/m³</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="txt-status" [style.color]="(data.current.pm10 | pm10Pipe).color">{{ (data.current.pm10 | pm10Pipe).label }}</span>
+    </div>
+
+    <div class="ghost-inner-card inner-card">
+      <span class="txt-label">Concentración de Ozono (O3)</span>
+
+      <div class="card-body">
+        <div class="value-row">
+          <ng-icon name="lucideShieldCheck" class="card-icon" [style.color]="(data.current.ozone | ozonePipe).color"></ng-icon>
+          <div class="val-unit">
+            <span class="txt-value">{{ data.current.ozone }}</span>
+            <span class="txt-unit">µg/m³</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="txt-status" [style.color]="(data.current.ozone | ozonePipe).color">{{ (data.current.ozone | ozonePipe).label }}</span>
+    </div>
+
+  </div>
+}

@@ -15,12 +15,12 @@ export interface DailyWeather {
 }
 
 @Component({
-  selector: 'app-hourly-weather',
+  selector: 'app-daily-forecast',
   imports: [IconWeatherPipe, NgIconComponent],
-  templateUrl: './hourly-weather.html',
-  styleUrl: './hourly-weather.css',
+  templateUrl: './daily-forecast.html',
+  styleUrl: './daily-forecast.css',
 })
-export class HourlyWeather implements OnChanges {
+export class DailyForecast implements OnChanges {
   weatherData = input<WeatherResponse | null>(null, { alias: 'hourly' });
 
   DayW = signal<{ date: string[]; tempMax: number[]; tempMin: number[]; codes: number[] }>({
