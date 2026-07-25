@@ -1,20 +1,83 @@
-<main class="dashboard-wrapper">
-  <div class="glass-grid-layout">
-    <app-current-weather
-      class="ghost-card area-current"
-      [current]="currentWeather"
-      [locationData]="location"
+<div class="flex min-h-screen w-full bg-white flex-col lg:flex-row font-sans antialiased">
+  <aside
+    class="w-full lg:w-16 bg-white border-b lg:border-b-0 lg:border-r border-slate-200 flex lg:flex-col items-center py-2 lg:py-5 px-5 lg:px-0 shrink-0 z-10 justify-between lg:justify-normal"
+  >
+    <div class="mb-0 lg:mb-6 flex justify-center">
+      <div
+        class="w-10 h-10 rounded-xl flex items-center justify-center text-slate-500"
+        title="Meteo App"
+      >
+        <ng-icon name="phosphorCloudSunBold" class="text-xl"></ng-icon>
+      </div>
+    </div>
+
+    <div
+      class="mt-0 lg:mt-auto flex lg:flex-col gap-3 items-center pt-0 lg:pt-4 border-t-0 lg:border-t border-slate-200 w-auto lg:w-full justify-center"
     >
-    </app-current-weather>
+      <button
+        class="w-10 h-10 rounded-xl text-slate-500 flex items-center justify-center cursor-pointer transition-all duration-150 ease-in-out hover:text-slate-900 hover:bg-slate-50"
+        type="button"
+        (click)="refreshData()"
+        title="Actualizar clima"
+      >
+        <ng-icon
+          name="phosphorArrowClockwiseBold"
+          class="text-xl"
+          [class.animate-spin]="isRefreshing"
+        ></ng-icon>
+      </button>
 
-    <app-daily-forecast class="ghost-card area-hourly" [hourly]="currentWeather">
-    </app-daily-forecast>
+      <a
+        href="https://danielchura.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-10 h-10 rounded-xl text-slate-500 flex items-center justify-center cursor-pointer no-underline transition-all duration-150 ease-in-out hover:text-slate-900 hover:bg-slate-50"
+        title="Creador (Daniel Chura)"
+      >
+        <ng-icon name="phosphorArrowUpRightBold" class="text-xl"></ng-icon>
+      </a>
+    </div>
+  </aside>
 
-    <app-air-quality class="ghost-card area-air" [air]="airQuality"> </app-air-quality>
+  <main class="flex-1 flex justify-center p-4 lg:p-10 min-h-screen lg:h-dvh">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-5 max-w-[1400px] w-full h-full"
+    >
+      <app-air-quality
+        class="border border-slate-200 rounded-2xl p-6 flex flex-col overflow-hidden transition-colors duration-150 hover:border-slate-300"
+        appEntryFade
+        [air]="airQuality"
+      >
+      </app-air-quality>
 
-    <app-uv-index class="ghost-card area-uv" [uvIndex]="currentWeather"></app-uv-index>
+      <app-current-weather
+        class="border border-slate-200 rounded-2xl p-6 flex flex-col justify-center items-center text-center overflow-hidden transition-colors duration-150 hover:border-slate-300"
+        appEntryFade
+        [current]="currentWeather"
+        [locationData]="location"
+      >
+      </app-current-weather>
 
-    <app-hourly-chart class="ghost-card area-weekly" [weekly]="weeklyWeather">
-    </app-hourly-chart>
-  </div>
-</main>
+      <app-daily-forecast
+        class="border border-slate-200 rounded-2xl p-6 flex flex-col overflow-hidden transition-colors duration-150 hover:border-slate-300 lg:row-span-2"
+        appEntryFade
+        [hourly]="currentWeather"
+      >
+      </app-daily-forecast>
+
+      <app-uv-index
+        class="border border-slate-200 rounded-2xl p-6 flex flex-col overflow-hidden transition-colors duration-150 hover:border-slate-300"
+        appEntryFade
+        [uvIndex]="currentWeather"
+      >
+      </app-uv-index>
+
+      <app-hourly-chart
+        class="border border-slate-200 rounded-2xl p-6 flex flex-col overflow-hidden transition-colors duration-150 hover:border-slate-300"
+        appEntryFade
+        [weekly]="weeklyWeather"
+      >
+      </app-hourly-chart>
+    </div>
+  </main>
+</div>

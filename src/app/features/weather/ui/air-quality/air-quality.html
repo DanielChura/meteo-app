@@ -1,69 +1,89 @@
 @if (air(); as data) {
-  <div class="air-container">
+  <div class="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
+    <div
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 h-full w-full flex flex-col justify-between"
+    >
+      <span class="text-sm font-medium text-slate-600">Índice de Calidad del Aire (AQI)</span>
 
-    <div class="ghost-inner-card inner-card">
-      <span class="txt-label">Índice de Calidad del Aire (AQI)</span>
-
-      <div class="card-body">
-        <div class="value-row">
-          <ng-icon name="lucideActivity" class="card-icon" [style.color]="(data.current.european_aqi | europeanAqi).color"></ng-icon>
-          <div class="val-unit">
-            <span class="txt-value">{{ data.current.european_aqi }}</span>
-            <span class="txt-unit">Idx</span>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <div class="flex items-center gap-3 w-full">
+          <ng-icon name="phosphorHeartbeatBold" class="text-slate-600"></ng-icon>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-mono text-slate-900">{{ data.current.european_aqi }}</span>
+            <span class="text-sm text-slate-500">Idx</span>
           </div>
         </div>
       </div>
 
-      <span class="txt-status" [style.color]="(data.current.european_aqi | europeanAqi).color">{{ (data.current.european_aqi | europeanAqi).label }}</span>
+      <span
+        class="text-sm font-medium mt-1"
+        [style.color]="(data.current.european_aqi | europeanAqi).color"
+        >{{ (data.current.european_aqi | europeanAqi).label }}</span
+      >
     </div>
 
-    <div class="ghost-inner-card inner-card">
-      <span class="txt-label">Partículas de Polvo Fino (PM2.5)</span>
+    <div
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 h-full w-full flex flex-col justify-between"
+    >
+      <span class="text-sm font-medium text-slate-600">Partículas de Polvo Fino (PM2.5)</span>
 
-      <div class="card-body">
-        <div class="value-row">
-          <ng-icon name="lucideWaves" class="card-icon" [style.color]="(data.current.pm2_5 | pm25Pipe).color"></ng-icon>
-          <div class="val-unit">
-            <span class="txt-value">{{ data.current.pm2_5 }}</span>
-            <span class="txt-unit">µg/m³</span>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <div class="flex items-center gap-3 w-full">
+          <ng-icon name="phosphorWavesBold" class="text-slate-600"></ng-icon>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-mono text-slate-900">{{ data.current.pm2_5 }}</span>
+            <span class="text-sm text-slate-500">µg/m³</span>
           </div>
         </div>
       </div>
 
-      <span class="txt-status" [style.color]="(data.current.pm2_5 | pm25Pipe).color">{{ (data.current.pm2_5 | pm25Pipe).label }}</span>
+      <span
+        class="text-sm font-medium mt-1"
+        [style.color]="(data.current.pm2_5 | pm25Pipe).color"
+        >{{ (data.current.pm2_5 | pm25Pipe).label }}</span
+      >
     </div>
 
-    <div class="ghost-inner-card inner-card">
-      <span class="txt-label">Partículas de Polvo (PM10)</span>
+    <div
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 h-full w-full flex flex-col justify-between"
+    >
+      <span class="text-sm font-medium text-slate-600">Partículas de Polvo (PM10)</span>
 
-      <div class="card-body">
-        <div class="value-row">
-          <ng-icon name="lucideWind" class="card-icon" [style.color]="(data.current.pm10 | pm10Pipe).color"></ng-icon>
-          <div class="val-unit">
-            <span class="txt-value">{{ data.current.pm10 }}</span>
-            <span class="txt-unit">µg/m³</span>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <div class="flex items-center gap-3 w-full">
+          <ng-icon name="phosphorWindBold" class="text-slate-600"></ng-icon>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-mono text-slate-900">{{ data.current.pm10 }}</span>
+            <span class="text-sm text-slate-500">µg/m³</span>
           </div>
         </div>
       </div>
 
-      <span class="txt-status" [style.color]="(data.current.pm10 | pm10Pipe).color">{{ (data.current.pm10 | pm10Pipe).label }}</span>
+      <span class="text-sm font-medium mt-1" [style.color]="(data.current.pm10 | pm10Pipe).color">{{
+        (data.current.pm10 | pm10Pipe).label
+      }}</span>
     </div>
 
-    <div class="ghost-inner-card inner-card">
-      <span class="txt-label">Concentración de Ozono (O3)</span>
+    <div
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 h-full w-full flex flex-col justify-between"
+    >
+      <span class="text-sm font-medium text-slate-600">Concentración de Ozono (O3)</span>
 
-      <div class="card-body">
-        <div class="value-row">
-          <ng-icon name="lucideShieldCheck" class="card-icon" [style.color]="(data.current.ozone | ozonePipe).color"></ng-icon>
-          <div class="val-unit">
-            <span class="txt-value">{{ data.current.ozone }}</span>
-            <span class="txt-unit">µg/m³</span>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <div class="flex items-center gap-3 w-full">
+          <ng-icon name="phosphorShieldCheckBold" class="text-slate-600"></ng-icon>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-mono text-slate-900">{{ data.current.ozone }}</span>
+            <span class="text-sm text-slate-500">µg/m³</span>
           </div>
         </div>
       </div>
 
-      <span class="txt-status" [style.color]="(data.current.ozone | ozonePipe).color">{{ (data.current.ozone | ozonePipe).label }}</span>
+      <span
+        class="text-sm font-medium mt-1"
+        [style.color]="(data.current.ozone | ozonePipe).color"
+        >{{ (data.current.ozone | ozonePipe).label }}</span
+      >
     </div>
-
   </div>
 }

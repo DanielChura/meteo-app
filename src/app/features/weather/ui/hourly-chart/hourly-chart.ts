@@ -2,6 +2,7 @@ import { Component, ElementRef, input, OnChanges, signal, ViewChild } from '@ang
 import { WeatherResponse } from '../../models/DTOresponse';
 import { Chart } from 'chart.js/auto';
 import { options } from './chart-config';
+
 export interface HourlyDetail {
   time: string;
   temp: number;
@@ -15,7 +16,6 @@ export interface DayData {
 @Component({
   selector: 'app-hourly-chart',
   templateUrl: './hourly-chart.html',
-  styleUrl: './hourly-chart.css',
 })
 export class HourlyChart implements OnChanges {
   weekly = input<WeatherResponse | null>();
@@ -72,8 +72,8 @@ export class HourlyChart implements OnChanges {
     let gradientFill;
     if (ctx) {
       gradientFill = ctx.createLinearGradient(0, 0, 0, canvasEl.parentElement?.clientHeight || 300);
-      gradientFill.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
-      gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      gradientFill.addColorStop(0, 'rgba(2, 132, 199, 0.15)');
+      gradientFill.addColorStop(1, 'rgba(2, 132, 199, 0.0)');
     }
 
     this.chart = new Chart(canvasEl, {
@@ -84,19 +84,19 @@ export class HourlyChart implements OnChanges {
           {
             label: 'Temperatura',
             data: tempY,
-            borderColor: '#ffffff',
-            backgroundColor: gradientFill || 'rgba(255, 255, 255, 0.1)',
-            borderWidth: 3,
+            borderColor: '#0284C7',
+            backgroundColor: gradientFill || 'rgba(2, 132, 199, 0.08)',
+            borderWidth: 2,
             fill: true,
             tension: 0.4,
-            pointBackgroundColor: '#ffffff',
-            pointBorderColor: 'transparent',
+            pointBackgroundColor: '#0284C7',
+            pointBorderColor: '#FFFFFF',
             pointBorderWidth: 2,
             pointRadius: 0,
             pointHoverRadius: 6,
-            pointHoverBackgroundColor: '#ffffff',
-            pointHoverBorderColor: 'rgba(255, 255, 255, 0.5)',
-            pointHoverBorderWidth: 4,
+            pointHoverBackgroundColor: '#0284C7',
+            pointHoverBorderColor: '#FFFFFF',
+            pointHoverBorderWidth: 2,
           },
         ],
       },

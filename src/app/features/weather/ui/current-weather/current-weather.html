@@ -1,44 +1,50 @@
 @if (current() && locationData(); as data) {
-  <section class="weather-hero">
-    <header class="hero-header">
-      <ng-icon name="lucideMapPin" class="location-icon"></ng-icon>
-      <span class="location">{{ locationData()?.city }}, {{ locationData()?.countryCode }}</span>
+  <section class="flex flex-col h-full w-full gap-10 justify-center items-center">
+    <header class="flex items-center gap-2 justify-center">
+      <ng-icon name="phosphorMapPinBold" class="text-lg text-slate-400"></ng-icon>
+      <span class="capitalize text-sm font-medium text-slate-500"
+        >{{ locationData()?.city }}, {{ locationData()?.countryCode }}</span
+      >
     </header>
 
-    <div class="hero-main">
-      <div class="main-temp-wrapper">
-        <span class="temp-value"
-          >{{ current()?.current?.temperature_2m }}<span class="degree">°</span></span
+    <div class="flex flex-col items-center justify-center gap-4">
+      <div class="flex justify-center items-center">
+        <span class="text-6xl font-medium tracking-tighter text-slate-900"
+          >{{ current()?.current?.temperature_2m }}<span>°</span></span
         >
       </div>
 
-      <div class="weather-condition">
+      <div class="flex items-center justify-center gap-3 text-slate-500 text-lg font-normal">
         <ng-icon
           [name]="(current()!.current!.weather_code | iconWeather).icon"
-          class="weather-icon"
+          class="text-2xl"
         ></ng-icon>
-        <span class="condition-text">{{
+        <span class="capitalize">{{
           (current()!.current!.weather_code | iconWeather).description
         }}</span>
       </div>
     </div>
 
-    <footer class="extra-info">
-      <div class="info-item">
-        <ng-icon name="lucideWind" class="info-icon"></ng-icon>
-        <div class="info-texts">
-          <span class="txt-label">Viento</span>
-          <span class="txt-status">{{ current()?.current?.wind_speed_10m }} km/h</span>
+    <footer
+      class="flex flex-row items-center justify-center gap-4 w-auto mt-0 py-3 px-6 rounded-xl border border-slate-200"
+    >
+      <div class="flex items-center gap-3">
+        <ng-icon name="phosphorWindBold" class="text-2xl text-slate-400"></ng-icon>
+        <div class="flex flex-col items-start gap-0.5">
+          <span class="text-sm font-medium text-slate-400">Viento</span>
+          <span class="text-sm font-medium text-slate-900"
+            >{{ current()?.current?.wind_speed_10m }} km/h</span
+          >
         </div>
       </div>
 
-      <div class="info-separator"></div>
+      <div class="w-px h-9 bg-slate-200"></div>
 
-      <div class="info-item">
-        <ng-icon name="lucideMountain" class="info-icon"></ng-icon>
-        <div class="info-texts">
-          <span class="txt-label">Elevación</span>
-          <span class="txt-status">{{ current()?.elevation }} m</span>
+      <div class="flex items-center gap-3">
+        <ng-icon name="phosphorMountainsBold" class="text-2xl text-slate-400"></ng-icon>
+        <div class="flex flex-col items-start gap-0.5">
+          <span class="text-sm font-medium text-slate-400">Elevación</span>
+          <span class="text-sm font-medium text-slate-900">{{ current()?.elevation }} m</span>
         </div>
       </div>
     </footer>

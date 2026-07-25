@@ -1,4 +1,4 @@
-import { ChartOptions, TooltipItem } from 'chart.js';
+import { ChartOptions } from 'chart.js';
 
 export const options: ChartOptions<'line'> = {
   responsive: true,
@@ -8,22 +8,22 @@ export const options: ChartOptions<'line'> = {
       display: false,
     },
     tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#1a1a1a',
-      bodyColor: '#333333',
-      borderColor: 'rgba(255, 255, 255, 0.5)',
+      backgroundColor: '#0F172A',
+      titleColor: '#FFFFFF',
+      bodyColor: '#38BDF8',
+      borderColor: '#1E293B',
       borderWidth: 1,
       padding: 12,
       displayColors: false,
       titleFont: {
-        family: "'Manrope', sans-serif",
-        size: 13,
-        weight: 'bold'
+        family: "'Plus Jakarta Sans', sans-serif",
+        size: 12,
+        weight: 'bold',
       },
       bodyFont: {
-        family: "'Manrope', sans-serif",
+        family: "'Plus Jakarta Sans', sans-serif",
         size: 14,
-        weight: 'bold'
+        weight: 'bold',
       },
       callbacks: {
         label: function (context) {
@@ -36,7 +36,7 @@ export const options: ChartOptions<'line'> = {
     padding: {
       top: 20,
       bottom: 5,
-    }
+    },
   },
   scales: {
     x: {
@@ -44,10 +44,11 @@ export const options: ChartOptions<'line'> = {
         display: false,
       },
       ticks: {
-        color: 'rgba(255, 255, 255, 0.95)',
+        color: '#64748B',
         font: {
-          family: "'Manrope', sans-serif",
-          size: 12.8,
+          family: "'Plus Jakarta Sans', sans-serif",
+          size: 11,
+          weight: 500,
         },
         maxTicksLimit: 6,
       },

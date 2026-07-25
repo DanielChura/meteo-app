@@ -4,16 +4,16 @@ import { LocationInfo } from '../../models/DTOgeoCode';
 import { IconWeatherPipe } from '../../../../core/pipes/icon-weather-pipe';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
-  lucideMapPin,
-  lucideWind,
-  lucideMountain,
-  lucideSun,
-  lucideCloud,
-  lucideCloudFog,
-  lucideCloudRain,
-  lucideSnowflake,
-  lucideCloudLightning,
-} from '@ng-icons/lucide';
+  phosphorMapPinBold,
+  phosphorWindBold,
+  phosphorMountainsBold,
+  phosphorSunBold,
+  phosphorCloudBold,
+  phosphorCloudFogBold,
+  phosphorCloudRainBold,
+  phosphorSnowflakeBold,
+  phosphorCloudLightningBold,
+} from '@ng-icons/phosphor-icons/bold';
 
 @Component({
   selector: 'app-current-weather',
@@ -21,19 +21,18 @@ import {
   imports: [NgIcon, IconWeatherPipe],
   providers: [
     provideIcons({
-      lucideMapPin,
-      lucideWind,
-      lucideMountain,
-      lucideSun,
-      lucideCloud,
-      lucideCloudFog,
-      lucideCloudRain,
-      lucideSnowflake,
-      lucideCloudLightning,
+      phosphorMapPinBold,
+      phosphorWindBold,
+      phosphorMountainsBold,
+      phosphorSunBold,
+      phosphorCloudBold,
+      phosphorCloudFogBold,
+      phosphorCloudRainBold,
+      phosphorSnowflakeBold,
+      phosphorCloudLightningBold,
     }),
   ],
   templateUrl: './current-weather.html',
-  styleUrl: './current-weather.css',
 })
 export class CurrentWeather {
   current = input<WeatherResponse | null>();

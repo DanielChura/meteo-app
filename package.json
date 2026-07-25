@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "private": true,
-  "packageManager": "npm@11.7.0",
+  "packageManager": "pnpm@10.7.0",
   "dependencies": {
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
@@ -19,9 +19,13 @@
     "@angular/router": "^21.2.0",
     "@ng-icons/core": "^33.2.0",
     "@ng-icons/lucide": "^33.2.0",
+    "@ng-icons/phosphor-icons": "^34.0.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "chart.js": "^4.5.1",
     "ng2-charts": "^10.0.0",
+    "postcss": "^8.5.23",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.3.3",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

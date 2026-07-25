@@ -5,12 +5,11 @@ import { OzonePipePipe } from '../../../../core/pipes/ozone-pipe-pipe';
 import { Pm25PipePipe } from '../../../../core/pipes/pm2.5-pipe-pipe';
 import { Pm10PipePipe } from '../../../../core/pipes/pm10-pipe-pipe';
 import {
-  lucideWind,
-  lucideWaves,
-  lucideShieldCheck,
-  lucideActivity,
-  lucideLeaf,
-} from '@ng-icons/lucide';
+  phosphorWindBold,
+  phosphorWavesBold,
+  phosphorShieldCheckBold,
+  phosphorHeartbeatBold,
+} from '@ng-icons/phosphor-icons/bold';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 
 @Component({
@@ -19,15 +18,13 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
   imports: [EuropeanAqiPipe, OzonePipePipe, Pm25PipePipe, Pm10PipePipe, NgIcon],
   providers: [
     provideIcons({
-      lucideWind,
-      lucideWaves,
-      lucideShieldCheck,
-      lucideActivity,
-      lucideLeaf,
+      phosphorWindBold,
+      phosphorWavesBold,
+      phosphorShieldCheckBold,
+      phosphorHeartbeatBold,
     }),
   ],
   templateUrl: './air-quality.html',
-  styleUrl: './air-quality.css',
 })
 export class AirQuality {
   air = input<AirQualityResponse | null>();

@@ -1,14 +1,13 @@
 import { Component, input, computed } from '@angular/core';
 import { WeatherResponse } from '../../models/DTOresponse';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideSun, lucideDroplets } from '@ng-icons/lucide';
+import { phosphorSunBold, phosphorDropBold } from '@ng-icons/phosphor-icons/bold';
 
 @Component({
   selector: 'app-uv-index',
   imports: [NgIcon],
-  providers: [provideIcons({ lucideSun, lucideDroplets })],
+  providers: [provideIcons({ phosphorSunBold, phosphorDropBold })],
   templateUrl: './uv-index.html',
-  styleUrl: './uv-index.css',
 })
 export class UvIndex {
   uvIndex = input<WeatherResponse | null>(null);
@@ -22,24 +21,24 @@ export class UvIndex {
 
     if (uvVal <= 2) {
       status = 'Bajo';
-      recommendation = 'Nivel seguro. Sin protección necesaria.';
-      color = '#10b981'; // emeral-500
+      recommendation = 'Nivel seguro. Sin proteccion necesaria.';
+      color = '#059669';
     } else if (uvVal <= 5) {
       status = 'Moderado';
       recommendation = 'Use protector solar FPS 30+ y gafas.';
-      color = '#f59e0b'; // amber-500
+      color = '#D97706';
     } else if (uvVal <= 7) {
       status = 'Alto';
       recommendation = 'Use protector FPS 50+ y busque sombra.';
-      color = '#f97316'; // orange-500
+      color = '#EA580C';
     } else if (uvVal <= 10) {
       status = 'Muy Alto';
-      recommendation = 'Evite sol directo. Use protección total.';
-      color = '#ef4444'; // red-500
+      recommendation = 'Evite sol directo. Use proteccion total.';
+      color = '#DC2626';
     } else {
       status = 'Extremo';
-      recommendation = 'Peligro. Quédese en interiores hoy.';
-      color = '#8b5cf6'; // violet-500
+      recommendation = 'Peligro. Quedese en interiores hoy.';
+      color = '#991B1B';
     }
 
     return { value: uvVal, status, recommendation, percentage, color };
@@ -54,20 +53,20 @@ export class UvIndex {
 
     if (humVal < 30) {
       status = 'Seco';
-      recommendation = 'Aire muy seco. Manténgase hidratado.';
-      color = '#f59e0b'; // amber-500
+      recommendation = 'Aire muy seco. Mantengase hidratado.';
+      color = '#D97706';
     } else if (humVal <= 60) {
       status = 'Saludable';
       recommendation = 'Humedad ideal para confort y salud.';
-      color = '#10b981'; // emeral-500
+      color = '#059669';
     } else if (humVal <= 80) {
       status = 'Alta';
       recommendation = 'Ambiente algo pesado y bochornoso.';
-      color = '#3b82f6'; // blue-500
+      color = '#0284C7';
     } else {
       status = 'Muy Alta';
       recommendation = 'Humedad extrema. Aire muy pesado.';
-      color = '#6366f1'; // indigo-500
+      color = '#2563EB';
     }
 
     return { value: humVal, status, recommendation, percentage, color };

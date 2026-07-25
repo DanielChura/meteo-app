@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { OpenMeteoHttp } from '../weather/api/open-meteo-http';
 import { LocationService } from '../weather/api/location';
 import { CurrentWeather } from '../weather/ui/current-weather/current-weather';
@@ -10,18 +10,42 @@ import { AirQuality } from '../weather/ui/air-quality/air-quality';
 import { AirQualityResponse } from '../weather/models/DTOairResponse';
 import { OpenAirHttp } from '../weather/api/open-air-https';
 import { UvIndex } from '../weather/ui/uv-index/uv-index';
+import { EntryFadeDirective } from '../../core/animate/entry-fade.directive';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  phosphorCloudSunBold,
+  phosphorSquaresFourBold,
+  phosphorArrowClockwiseBold,
+  phosphorArrowUpRightBold,
+} from '@ng-icons/phosphor-icons/bold';
 
 @Component({
   selector: 'app-weather-dashboard',
-  imports: [CurrentWeather, HourlyChart, DailyForecast, AirQuality, UvIndex],
+  imports: [
+    CurrentWeather,
+    HourlyChart,
+    DailyForecast,
+    AirQuality,
+    UvIndex,
+    EntryFadeDirective,
+    NgIcon,
+  ],
+  providers: [
+    provideIcons({
+      phosphorCloudSunBold,
+      phosphorSquaresFourBold,
+      phosphorArrowClockwiseBold,
+      phosphorArrowUpRightBold,
+    }),
+  ],
   templateUrl: './weather-dashboard.html',
-  styleUrl: './weather-dashboard.css',
 })
 export class WeatherDashboard implements OnInit {
   currentWeather: WeatherResponse | null = null;
   weeklyWeather: WeatherResponse | null = null;
   location: LocationInfo | null = null;
   airQuality: AirQualityResponse | null = null;
+  isRefreshing = false;
 
   constructor(
     private readonly openMeteoHttp: OpenMeteoHttp,
@@ -40,6 +64,15 @@ export class WeatherDashboard implements OnInit {
     } catch (error) {
       console.error('El usuario denegó el permiso o hubo un error', error);
     }
+  }
+
+  refreshData(): void {
+    this.isRefreshing = true;
+    this.ngOnInit();
+    setTimeout(() => {
+      this.isRefreshing = false;
+      this.cdr.detectChanges();
+    }, 800);
   }
 
   ngOnInit(): void {

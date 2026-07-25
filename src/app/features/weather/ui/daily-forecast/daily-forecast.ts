@@ -18,7 +18,6 @@ export interface DailyWeather {
   selector: 'app-daily-forecast',
   imports: [IconWeatherPipe, NgIconComponent],
   templateUrl: './daily-forecast.html',
-  styleUrl: './daily-forecast.css',
 })
 export class DailyForecast implements OnChanges {
   weatherData = input<WeatherResponse | null>(null, { alias: 'hourly' });

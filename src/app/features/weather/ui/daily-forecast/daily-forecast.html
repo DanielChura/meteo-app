@@ -1,19 +1,21 @@
-<main class="hourly-weather-list">
+<main class="flex flex-col justify-between h-full w-full">
   @for (day of DayW().date; track day; let i = $index) {
-    <div class="ghost-inner-card day-card">
-      <div class="day-info">
-        <span class="day-name">{{ day }}</span>
-        <span class="weather-desc">{{ (DayW().codes[i] | iconWeather).description }}</span>
+    <div
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 grid grid-cols-3 items-center px-5 py-5"
+    >
+      <div class="flex flex-col gap-0">
+        <span class="font-medium text-slate-900">{{ day }}</span>
+        <span class="text-slate-500">{{ (DayW().codes[i] | iconWeather).description }}</span>
       </div>
 
       <ng-icon
         [name]="(DayW().codes[i] | iconWeather).icon"
-        class="weather-icon"
+        class="text-2xl text-slate-500 justify-self-center"
       ></ng-icon>
 
-      <div class="day-temp">
-        <span class="temp-max">{{ DayW().tempMax[i] }}°</span>
-        <span class="temp-min">{{ DayW().tempMin[i] }}°</span>
+      <div class="flex flex-col items-end gap-0 font-mono">
+        <span class="text-slate-900">{{ DayW().tempMax[i] }}°</span>
+        <span class="text-slate-400">{{ DayW().tempMin[i] }}°</span>
       </div>
     </div>
   }

@@ -1,56 +1,76 @@
 @if (uvIndex(); as data) {
-  <div class="uv-grid-container">
-    <article class="ghost-inner-card high-fidelity-card">
-      <header class="card-header">
-        <div class="header-title">
-          <ng-icon name="lucideSun" class="header-icon" [style.color]="uvData().color"></ng-icon>
-          <span class="txt-label">Índice UV</span>
+  <div class="flex flex-col gap-4 h-full w-full">
+    <article
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 flex-1 flex flex-col justify-between"
+    >
+      <header class="flex justify-between items-center w-full mb-3">
+        <div class="flex items-center gap-2">
+          <ng-icon
+            name="phosphorSunBold"
+            class="text-lg text-slate-600"
+            [style.color]="uvData().color"
+          ></ng-icon>
+          <span class="text-sm font-medium text-slate-600">Índice UV</span>
         </div>
-        <span class="txt-status" [style.color]="uvData().color">{{ uvData().status }}</span>
+        <span class="text-sm font-medium text-slate-900" [style.color]="uvData().color">{{
+          uvData().status
+        }}</span>
       </header>
 
-      <div class="card-body">
-        <span class="txt-value">{{ uvData().value }}</span>
-        <div class="gauge-track">
-          <div class="gauge-fill"
-               [style.width.%]="uvData().percentage"
-               [style.backgroundColor]="uvData().color"
-               [style.boxShadow]="'0 0 10px ' + uvData().color">
-          </div>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <span class="text-2xl font-mono text-slate-900">{{ uvData().value }}</span>
+        <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-300"
+            [style.width.%]="uvData().percentage"
+            [style.backgroundColor]="uvData().color"
+          ></div>
         </div>
       </div>
 
-      <footer class="card-footer">
-        <p class="txt-recommendation">{{ uvData().recommendation }}</p>
+      <footer class="mt-auto pt-3">
+        <p class="text-sm text-slate-500 leading-normal m-0 font-normal">
+          {{ uvData().recommendation }}
+        </p>
       </footer>
     </article>
-    <article class="ghost-inner-card high-fidelity-card">
-      <header class="card-header">
-        <div class="header-title">
-          <ng-icon name="lucideDroplets" class="header-icon" [style.color]="humidityData().color"></ng-icon>
-          <span class="txt-label">Humedad</span>
+
+    <article
+      class="border border-slate-200 rounded-xl transition-colors duration-150 hover:border-slate-300 p-5 flex-1 flex flex-col justify-between"
+    >
+      <header class="flex justify-between items-center w-full mb-3">
+        <div class="flex items-center gap-2">
+          <ng-icon
+            name="phosphorDropBold"
+            class="text-lg text-slate-600"
+            [style.color]="humidityData().color"
+          ></ng-icon>
+          <span class="text-sm font-medium text-slate-600">Humedad</span>
         </div>
-        <span class="txt-status" [style.color]="humidityData().color">{{ humidityData().status }}</span>
+        <span class="text-sm font-medium text-slate-900" [style.color]="humidityData().color">{{
+          humidityData().status
+        }}</span>
       </header>
 
-      <div class="card-body">
-        <div class="value-block">
-          <span class="txt-value">{{ humidityData().value }}</span>
-          <small class="txt-unit">%</small>
+      <div class="flex flex-col justify-center flex-1 gap-2">
+        <div class="flex items-baseline gap-2">
+          <span class="text-2xl font-mono text-slate-900">{{ humidityData().value }}</span>
+          <small class="text-sm text-slate-600">%</small>
         </div>
-        <div class="gauge-track">
-          <div class="gauge-fill"
-               [style.width.%]="humidityData().percentage"
-               [style.backgroundColor]="humidityData().color"
-               [style.boxShadow]="'0 0 10px ' + humidityData().color">
-          </div>
+        <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-300"
+            [style.width.%]="humidityData().percentage"
+            [style.backgroundColor]="humidityData().color"
+          ></div>
         </div>
       </div>
 
-      <footer class="card-footer">
-        <p class="txt-recommendation">{{ humidityData().recommendation }}</p>
+      <footer class="mt-auto pt-3">
+        <p class="text-sm text-slate-500 leading-normal m-0 font-normal">
+          {{ humidityData().recommendation }}
+        </p>
       </footer>
     </article>
-
   </div>
 }
